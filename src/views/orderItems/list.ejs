@@ -1,0 +1,26 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+<div class="container mt-5">
+    <h2>order Hisotry</h2>
+    <table class="table table-bordered mt-4 text-center">
+        <thead class="table-light">
+            <tr>
+                <th>Order Id</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% items.forEach(i => { %> 
+            <tr>
+                <td><%= i.cart_id%></td>
+                <td><%= i.prod_name%></td>
+                <td><%= i.quantity%></td>
+                <td>$<%= i.price%></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include("../partials/footer") %>

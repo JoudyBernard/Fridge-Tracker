@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+<div class="container mt-5">
+    <h2 class="mb-4">Management</h2>
+    <table class="table table-bordered text-center">
+        <thead class="table-light">
+            <tr>
+                <th>Products</th>
+                <th>Quantity</th>
+                <th>Restock limit</th>
+                <th>Status</th>
+                <th>Quantity Management</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% products.forEach(p => { %>
+                <tr>
+                    <td><%= p.prod_name %></td>
+                    <td><%= p.quantity %></td>
+                    <td><%= p.restock_limit %></td>
+                    <td>
+                        <% if(p.quantity > p.restock_limit){%>
+                        No Alerts
+                    <% } else { %>
+                        Under restock Limit!
+                    <% } %>
+                    </td>
+
+                    <td>
+                        <a href="/fridge/<%= p.f_id %>/decrement/<%= p.prod_id %>" class="btn btn-danger btn-sm">- </a>
+                        <a href="/fridge/<%= p.f_id %>/increment/<%= p.prod_id %>" class="btn btn-success btn-sm">+</a>
+                    </td>
+              </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include ("../partials/footer") %>

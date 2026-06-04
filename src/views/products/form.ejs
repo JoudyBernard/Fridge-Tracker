@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+
+<div class="container mt-5">
+    <h2><%= product? "Edit Product" : "Add New Product" %></h2>
+    <form
+        action="<%= product? '/products/' + product.prod_id + '?_method=PUT' : '/products' %>"
+        method="POST"
+        class="mt-4"
+    >
+    <input class="form-control mb-3" name="prod_name" placeholder="Product name" value="<%= product?.prod_name || '' %>">
+    <input class="form-control mb-3" name="prod_price" placeholder="Price" value="<%= product?.prod_price || '' %>">
+
+    <button class="btn btn-success w-100">
+        <%= product? "Save changes" :"Create Product" %>
+    </button>
+</div>
+<%- include("../partials/footer") %>

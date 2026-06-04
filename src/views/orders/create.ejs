@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+<%- include("../partials/nav") %>
+
+<div class="container mt-5">
+    <h2>Create new Order</h2>
+    <form action="/orders" method="POST" class="mt-4">
+        <input class="form-control mb-3" name="user_id" placeholder="User ID">
+
+        <select class="form-control mb-3" name="prod_id">
+            <% products.forEach(p => {%>
+                <option value="<%=p.prod_id%>"><%= p.prod_name %></option>
+                <% }) %>
+        </select>
+        <input class="form-control mb-3" type="number" name="quantity" placeholder="Quantity">
+        <button class="btn btn-primary w-100">Place Order</button>
+    </form>
+</div>
+<%- include("../partials/footer") %>

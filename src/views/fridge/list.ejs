@@ -1,0 +1,36 @@
+<%- include("../partials/header") %>
+<div class="container mt-4">
+    <h2>Fridge List</h2>
+    <a href="/fridges/new" class="btn btn-success mb-3">+ Add New Fridge</a>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fridge Name</th>
+                <th>Location</th>
+                <th>Restock Limit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% fridges.forEach(fridge => { %>
+            <tr>
+                <td><%= fridge.f_id %></td>
+                <td><%= fridge.f_name %></td>
+                <td><%= fridge.location %></td>
+                <td><%= fridge.restock_limit %></td>
+                <td>
+                    <a href="/fridges/<%=fridge.f_id%>" class="btn btn-primary btn-sm">Manage</a>
+                    <a href="/fridges/<%=fridge.f_id%>/edit" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="/fridges/<%= fridge.f_id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('Delete this fridge?')">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+          <%  }) %>
+        </tbody>
+    </table>
+</div>
+<%- include("../partials/footer") %>
